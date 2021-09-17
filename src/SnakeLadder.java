@@ -9,20 +9,30 @@ public class SnakeLadder {
 	// write your code here
         int playerposition = 0;
         System.out.println("The start position of player is : " + playerposition);
-        Random ran=new Random();
-        int diceroll = ran.nextInt(6) + 1;
-        int check_play = ran.nextInt(3);
-        switch (check_play) {
-            case No_Play:
-                break;
-            case Ladder:
-                playerposition += diceroll;
-                break;
-            case Snake:
-                playerposition -= diceroll;
-                break;
+        System.out.println();
+        Random ranval = new Random();
+        while (playerposition < 100) {
+            int diceroll = ranval.nextInt(6) + 1;
+            int check_play = ranval.nextInt(3);
+            switch (check_play) {
+                case No_Play:
+                    break;
+                case Ladder:
+                    playerposition += diceroll;
+                    if (playerposition > 100) {
+                        playerposition = 100;
+                    }
+                    break;
+                case Snake:
+                    playerposition -= diceroll;
+                    if (playerposition < 0) {
+                        playerposition = 0;
+                    }
+                    break;
+            }
+            System.out.println("New position is= " + playerposition);
         }
-        System.out.println("After the roll dice....The position of player is : " + playerposition);
+        System.out.println("Player at position " + playerposition + " and also winner");
 
 
     }
